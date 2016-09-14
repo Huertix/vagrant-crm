@@ -23,10 +23,10 @@ vagrantfile:
                         id: crm-server
                         hostname: crm.server
                         network:
-                            private_network: 192.168.1.11
+                            public_network: 192.168.1.11
                             forwarded_port:
                                 vflmnfp_onnotg1n9hbm:
-                                    host: '2222'
+                                    host: '8228'
                                     guest: '22'
                         memory: '512'
                         cpus: '1'
@@ -41,7 +41,7 @@ vagrantfile:
             vflsf_4uy1eahymp5s:
                 source: ./
                 target: /var/www
-                sync_type: nfs
+                sync_type: default
                 smb:
                     smb_host: ''
                     smb_username: ''
@@ -86,7 +86,6 @@ server:
     install: '1'
     packages:
         - vim
-        - bower
         - git
 users_groups:
     install: '1'
@@ -95,9 +94,9 @@ users_groups:
 locale:
     install: '1'
     settings:
-        default_locale: es_ES.UTF-8
+        default_locale: en_GB.UTF-8
         locales:
-            - en_GB.UTF-8
+            - es_ES.UTF-8
             - en_US.UTF-8
         timezone: UTC
 firewall:
@@ -229,7 +228,6 @@ php:
         php:
             - cli
             - intl
-            - dblib
             - sybase
         pear: {  }
         pecl: {  }
@@ -347,15 +345,15 @@ mysql:
     adminer: 0
     users:
         mysqlnu_6ap8vrocg88v:
-            name: root
-            password: '123'
+            name: comercial
+            password: comercial
     databases:
         mysqlnd_96a82biv47yf:
-            name: ''
+            name: 'crm-tasc'
             sql: ''
     grants:
         mysqlng_xks5xzok8v86:
-            user: dbuser
+            user: comercial
             table: '*.*'
             privileges:
                 - ALL
